@@ -1,11 +1,12 @@
 # Anchore Enterprise Installation on OKD 3.11
 
-This document will walkthrough installing Anchore Enterprise on OpenShift Kubernetes Distribution (OKD) 3.11 with Helm. Anchore maintains a Helm chart for simplifying the deployment. You can find out more information by checking out the [GitHub Repository](https://github.com/helm/charts/tree/master/stable/anchore-engine) for the chart. 
+This document will walkthrough the installation of Anchore Enterprise on an OpenShift Kubernetes Distribution (OKD) 3.11 cluster and expose on the public internet.
 
 ## Prerequisites
 
-- OpenShift Kubernetes Distribution (OKD) 3.11 cluster installed. Read more about the installation requirements [here](https://docs.okd.io/3.11/install/running_install.html).
-- [Helm](https://helm.sh/) client and server installed and configured within your OKD cluster.
+- A running OpenShift Kubernetes Distribution (OKD) 3.11 cluster. Read more about the installation requirements [here](https://docs.okd.io/3.11/install/running_install.html).
+- [Helm](https://helm.sh/) client and server installed and configured with your OKD cluster.
+- [Anchore CLI](https://docs.anchore.com/current/docs/installation/anchore_cli/) installed on local host.
 
 **Considerations for Helm on OpenShift:**
 
@@ -22,9 +23,11 @@ rolebinding "tiller" created
 deployment "tiller" created
 ```
 
+**Note:** Set HELM_VERSION to your installed version of Helm.
+
 ## Anchore Helm Chart
 
-Anchore maintains a [Helm chart] to simplify the software installation process. An Enterprise installation of the chart will include the following:
+Anchore maintains a [Helm chart](https://github.com/helm/charts/tree/master/stable/anchore-engine) to simplify the software installation process. An Enterprise installation of the chart will include the following:
 
 - Anchore Enterprise Software
 - PostgreSQL (9.6.2)
@@ -154,7 +157,7 @@ anchore-enterprise-postgresql-795fd9c476-5z526                    1/1       Runn
 
 ### Create route objects
 
-Create two route object in OpenShift to expose the UI and API services:
+Create two route object in OpenShift to expose the UI and API services on the public internet:
 
 #### API Route
 ![api-config](images/anchore-route-api-config.png)
@@ -173,6 +176,8 @@ Verify by navigating to the anchore-enterprise-ui route hostname:
 
 Verify API route hostname via the Anchore CLI:
 
+**Note:** Read more on [Configuring the Anchore CLI](https://docs.anchore.com/current/docs/installation/anchore_cli/cli_config/)
+
 ```
 $ anchore-cli --url http://anchore-engine-anchore-enterprise.apps.54.84.147.202.nip.io/v1 --u admin --p foobar system status
 Service rbac_manager (anchore-enterprise-anchore-engine-api-5b5bffc79f-vmwvl, http://anchore-enterprise-anchore-engine-api:8229): up
@@ -190,7 +195,7 @@ Engine Code Version: 0.5.0
 
 #### Anchore Feeds
 
-It can take some time to fetch all of the vulnerability feeds from the upstream data sources. Check on the status of feeds:
+It can take some time to fetch all of the vulnerability feeds from the upstream data sources. Check on the status of feeds via Anchore CLI:
 
 ```
 $ anchore-cli --url http://anchore-engine-anchore-enterprise.apps.54.84.147.202.nip.io/v1 --u admin --p foobar system feeds list
