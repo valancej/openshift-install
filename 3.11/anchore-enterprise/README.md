@@ -171,7 +171,7 @@ Verify by navigating to the anchore-enterprise-ui route hostname:
 
 #### Anchore System
 
-Verify API route via the Anchore CLI:
+Verify API route hostname via the Anchore CLI:
 
 ```
 $ anchore-cli --url http://anchore-engine-anchore-enterprise.apps.54.84.147.202.nip.io/v1 --u admin --p foobar system status
