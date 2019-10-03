@@ -167,7 +167,7 @@ Create two route object in OpenShift to expose the UI and API services:
 
 Verify by navigating to the anchore-enterprise-ui route hostname:
 
-![ui](images/anchore-ui.png)
+![ui](images/ui.png)
 
 Verify API route via the Anchore CLI:
 
