@@ -13,15 +13,11 @@ postgresql:
   - name: LD_LIBRARY_PATH
     value: /opt/rh/rh-postgresql96/root/usr/lib64
   - name: PATH
-     value: /opt/rh/rh-postgresql96/root/usr/bin:/opt/app-root/src/bin:/opt/app-root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-    postgresPassword: <PASSWORD>
-    persistence:
-      size: 20Gi
+    value: /opt/rh/rh-postgresql96/root/usr/bin:/opt/app-root/src/bin:/opt/app-root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+  persistence:
+    size: 20Gi
 
 anchoreGlobal:
-  defaultAdminPassword: <PASSWORD>
-  defaultAdminEmail: <EMAIL>
-  enableMetrics: True
   openShiftDeployment: True
 
 anchoreEnterpriseGlobal:
@@ -42,10 +38,6 @@ anchore-feeds-db:
   - name: LD_LIBRARY_PATH
     value: /opt/rh/rh-postgresql96/root/usr/lib64
   - name: PATH
-     value: /opt/rh/rh-postgresql96/root/usr/bin:/opt/app-root/src/bin:/opt/app-root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-    postgresPassword: <PASSWORD>
-    persistence:
-      size: 50Gi
-
-anchore-ui-redis:
-  password: <PASSWORD>
+    value: /opt/rh/rh-postgresql96/root/usr/bin:/opt/app-root/src/bin:/opt/app-root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+  persistence:
+    size: 30Gi
