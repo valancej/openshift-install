@@ -157,7 +157,7 @@ anchore-enterprise-postgresql-795fd9c476-5z526                    1/1       Runn
 
 ### Create route objects
 
-Create two route object in OpenShift to expose the UI and API services on the public internet:
+Create two route object in the OpenShift console to expose the UI and API services on the public internet:
 
 #### API Route
 ![api-config](images/anchore-route-api-config.png)
