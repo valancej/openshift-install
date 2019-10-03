@@ -156,15 +156,15 @@ anchore-enterprise-postgresql-795fd9c476-5z526                    1/1       Runn
 
 Create two route object in OpenShift to expose the UI and API services:
 
-![images/anchore-route-api-config.png]
+![api-config](images/anchore-route-api-config.png)
 
-![images/anchore-route-ui-config.png]
+![ui-config](images/anchore-route-ui-config.png)
 
-![images/anchore-routes.png]
+![routes](images/anchore-routes.png)
 
 Verify by navigating to the anchore-enterprise-ui route hostname:
 
-![images/anchore-ui.png]
+![ui](images/anchore-ui.png)
 
 Verify API route via the Anchore CLI:
 
